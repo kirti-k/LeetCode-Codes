@@ -1,0 +1,21 @@
+// solution with Boyer-Moore voting algorithm
+
+class Solution {
+public:
+    int majorityElement(vector<int>& nums) {
+       int freq=1;
+        int number = nums[0];
+        for(int i=1;i<nums.size();i++)
+        {
+             if(freq == 0)
+                number = nums[i];
+            
+            if(nums[i] == number)
+                freq++;
+            else
+                freq--;
+                       
+        }
+     return number;   
+    }
+};
