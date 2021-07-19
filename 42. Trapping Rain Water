@@ -1,0 +1,40 @@
+/* Given n non-negative integers representing an elevation map where the width of each bar is 1, compute how much water it can trap after raining.
+Input: height = [0,1,0,2,1,0,1,3,2,1,2,1]
+Output: 6
+*/
+
+class Solution {
+public:
+    int trap(vector<int>& height) {
+        int m_left=0, m_right=0, ans=0;
+        int l = 0, r = height.size()-1;
+        while(l<r)
+        {
+            if(height[l]<height[r])
+            {
+                if(height[l]<m_left)
+                {
+                    ans += ( m_left - height[l]);
+                }
+                else
+                {
+                    m_left = height[l];
+                }
+               l++;     
+            }
+            else
+            {
+                if(height[r]>=m_right)
+                {
+                    m_right = height[r];
+                }
+                else
+                    ans += ( m_right-height[r]);
+                
+                r--;
+            }
+        }
+        return ans;
+        
+    }
+};
