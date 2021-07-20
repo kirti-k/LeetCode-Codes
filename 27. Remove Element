@@ -1,0 +1,42 @@
+//Given an integer array nums and an integer val, remove all occurrences of val in nums in-place. The relative order of the elements may be changed.
+
+class Solution {
+public:
+    int removeElement(vector<int>& nums, int val) {
+      int k=0;
+        int n = nums.size();
+        for(int i=0;i<nums.size();i++)
+        {
+            if(nums[i] == val)
+                nums[i] = -1;
+            else
+                k++;
+            
+        }
+        sort(nums.begin(), nums.end(), greater<int>());
+        return k;
+    }
+};
+
+Approach 2:
+
+class Solution {
+public:
+    int removeElement(vector<int>& nums, int val) {
+      int k = nums.size();
+        int i=0;
+        while(i<k)
+        {
+            if(nums[i]==val)
+            {
+                nums[i]=nums[k-1];
+                k--;
+            }
+            else
+            {
+                i++;
+            }
+        }
+        return k;
+    }
+};
