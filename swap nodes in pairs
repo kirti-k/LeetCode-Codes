@@ -1,0 +1,38 @@
+//Given a linked list, swap every two adjacent nodes and return its head. You must solve the problem without modifying the values in the list's nodes
+//(i.e., only nodes themselves may be changed.)
+
+class Solution {
+public:
+    ListNode* swapPairs(ListNode* head) {
+        
+        ListNode* first;
+        
+        ListNode* RetNode;
+        if(!head)
+            return NULL;
+        if(head->next == NULL)
+            return head;
+        first = head;
+        RetNode = head->next;
+                
+        while(1)
+        {
+            ListNode* sec;
+            ListNode* temp;
+            sec = first->next;
+            temp = sec->next;
+            sec->next = first;
+            if(temp == NULL || temp->next == NULL)
+            {
+                first->next = temp;
+                break;
+            }
+           
+           
+            first->next = temp->next;
+             first = temp;
+        }
+        
+        return RetNode;
+    }
+};
