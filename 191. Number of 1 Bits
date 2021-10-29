@@ -1,0 +1,21 @@
+Write a function that takes an unsigned integer and returns the number of '1' bits it has (also known as the Hamming weight).
+
+n = 00000000000000000000000000001011
+Output: 3
+//uint32_t is a numeric type that guarantees 32 bits. The value is unsigned, meaning that the range of values goes from 0 to 232 - 1.
+
+
+class Solution {
+public:
+    int hammingWeight(uint32_t n) {
+        
+        int count = 0;
+        for(uint32_t i=0;i<32;i++)
+        {
+            if(n&1)
+                count++;
+            n = n>>1;
+        }
+        return count;
+    }
+};
